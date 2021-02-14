@@ -13,9 +13,11 @@ function DashBoard() {
 
 
     return (
-        <div className="pl-0 container-fluid">
+        <div className="flex-container">
             <Sidebar />
             <div>
+
+
                 <h1>
                     Welcome: {state.user.first_name} {state.user.last_name}
                 </h1>

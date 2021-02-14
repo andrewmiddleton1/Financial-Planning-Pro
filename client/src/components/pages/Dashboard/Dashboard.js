@@ -4,7 +4,7 @@ import DashboardNewsCard from '../../DashboardNewsCard/DashboardNewsCard';
 import { useAppContext } from '../../../store';
 import { useLoginCheck } from '../../../utils/setAuthToken';
 import Item from './Item';
-import "./style.css";
+// import "./style.css";
 
 function DashBoard() {
     const [state, appDispatch] = useAppContext();

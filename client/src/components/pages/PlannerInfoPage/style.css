@@ -1,3 +1,8 @@
+
+.container-fluid h-100 p-0 m-0 {
+    left: 30%
+}
+
 .content {
     margin: 0 auto;
     max-width: 800px;
@@ -14,4 +19,27 @@
 
 .fc-title {
     color: black;
+}
+
+aside
+{
+    position: absolute;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border: 1px solid #111;
+}
+
+.sidebar {
+    background-color: darkblue;
+}
+
+@media screen and (max-width: 576px) { 
+    
+    .sidebar {
+        display: none !important;
+    }
+    aside {
+      display: none !important;
+    }
 }

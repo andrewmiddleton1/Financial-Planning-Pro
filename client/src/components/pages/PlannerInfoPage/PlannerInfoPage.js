@@ -13,24 +13,27 @@ import IncomeSearch from "../../ClientSearch/SearchFunctions/IncomeSearch";
 class PlannerInfoPage extends Component {
     render() {
         return (
-            <div className="container-fluid h-100 p-0 m-0">
+
+            <div className="flex-container">
                 <Sidebar />
-                <div className="content">
-                    <Button text={"Show Assets and Liabilities"} />
-                    <Button text={"Create Record of Advice"}
-                        href={"/createroa"} />
-                    <h1 className="text-center">Welcome to the Planner Tools!</h1>
+                <div className="flex-container">
+                    <div className="content">
+                        <Button text={"Show Assets and Liabilities"} />
+                        <Button text={"Create Record of Advice"}
+                            href={"/createroa"} />
+                        <h1 className="text-center">Welcome to the Planner Tools!</h1>
 
 
-                    <AssetsSearch />
-                    <br></br>
-                    <ExpensesSearch />
-                    <br></br>
-                    <LiabilitiesSearch />
-                    <br></br>
-                    <IncomeSearch />
+                        <AssetsSearch />
+                        <br></br>
+                        <ExpensesSearch />
+                        <br></br>
+                        <LiabilitiesSearch />
+                        <br></br>
+                        <IncomeSearch />
 
-                    {/* <DashboardNewsCard /> */}
+                        {/* <DashboardNewsCard /> */}
+                    </div>
                 </div>
             </div>
         );

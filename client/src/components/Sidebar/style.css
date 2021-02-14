@@ -16,11 +16,13 @@ aside
     float: left;
 }
 
-@media screen and (min-width: 320px) {
+
+@media screen and (max-width: 576px) { 
+    
     .sidebar {
-        display: none;
+        display: none !important;
     }
-    .aside {
-      display: none;
-  }
+    aside {
+      display: none !important;
+    }
 }

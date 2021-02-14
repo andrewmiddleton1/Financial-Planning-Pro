@@ -1,5 +1,5 @@
 import React from "react";
-import "./style.css";
+// import "./style.css";
 import tcaROA from "../assets/images/tcaROA.jpg";
 
 function ROAResults(props) {

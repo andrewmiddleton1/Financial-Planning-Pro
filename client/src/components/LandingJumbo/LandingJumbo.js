@@ -1,5 +1,6 @@
 import React from "react";
-import tcaLogo from "../assets/images/tca.JPG"
+import tcaLogo from "../assets/images/tca.JPG";
+import "./style.css";
 
 
 const LandingJumbo = (props) => {
@@ -8,7 +9,7 @@ const LandingJumbo = (props) => {
         <div className="jumbotron mt-5 landingJumbo">
             <div className='col-sm-8 mx-auto jumboText'>
                 <h1 className='d-flex justify-content-center companyName'>
-                    <div>
+                    <div className="tcaLogo">
                         <img src={tcaLogo} alt="tcaLogo" />
                     </div>
 

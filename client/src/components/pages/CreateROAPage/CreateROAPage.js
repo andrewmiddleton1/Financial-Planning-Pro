@@ -14,16 +14,18 @@ import { DocXButton } from "../../DocXTemplater/DocXTemplater";
 class CreateROAPage extends Component {
     render() {
         return (
-            <div className="container-fluid h-100 p-0 m-0">
+            <div className="flex-container">
                 <Sidebar />
-                <div className="content">
+                <div className="flex-container" id="inside_container">
+                    <div className="content">
 
-                    <h1 className="text-center">Create a Record of Advice (and other documents!)
+                        <h1 className="text-center">Create a Record of Advice (and other documents!)
                     <br></br>
-                        {<i className="fas fa-folder-minus" />}</h1>
-                    <CreateROA />
-                    <br></br>
-                    <DocXButton />
+                            {<i className="fas fa-folder-minus" />}</h1>
+                        <CreateROA />
+                        <br></br>
+                        <DocXButton />
+                    </div>
                 </div>
             </div>
         );

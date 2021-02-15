@@ -18,7 +18,7 @@ class PlannerInfoPage extends Component {
                 <Sidebar />
                 <div className="flex-container">
                     <div className="content">
-                        <Button text={"Show Assets and Liabilities"} />
+                        {/* <Button text={"Show Assets and Liabilities"} /> */}
                         <Button text={"Create Record of Advice"}
                             href={"/createroa"} />
                         <h1 className="text-center">Welcome to the Planner Tools!</h1>

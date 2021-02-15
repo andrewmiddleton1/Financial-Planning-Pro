@@ -1,0 +1,11 @@
+.tcaLogo {
+    
+    background-size:     cover;                  
+    background-repeat:   no-repeat;
+    background-position: center center;
+}
+
+.responsive {
+    max-width: 100%;
+    height: auto;
+  }

@@ -14,32 +14,52 @@ function ROAResults(props) {
 
     return (
 
-        <div className="jumbotron mt-5 landingJumbo">
-            <div className='col-sm-8 mx-auto jumboText'>
-                <h1 className='d-flex justify-content-center companyName'>
-                    {/* <div>
-                        <img src={tcaROA} alt="tcaROA" />
-                    </div> */}
+        <div className="dashboardCard card cardBackground">
+            <div className="card-body">
+                <h4 className="card-subtitle">Record of Advice</h4>
+                <p className="card-text">Details</p>
+                <a href="/" className="card-link bottomLink">
+                    More details
+                </a>
 
-                </h1>
-                <h2 className='text-center companySlogan'>Record of Advice (ROA) for:</h2>
 
-                {props.assets.map(result => {
-                    return (
-                        <tr key={result} >
-                            <td> {result.User.first_name} </td>
-                            <td> {"First Name"} </td>
-                            <td> {result.User.last_name} </td>
-                            <td> {"Last Name"} </td>
+
+                <table className="table">
+                    <thead >
+                        <tr>
+                            <th scope="col" >First Name</th>
+                            <th scope="col" >Last Name </th>
+
+
+
                         </tr>
-                    )
-                })
-                }
+                    </thead>
+                    <tbody>
+                        {props.assets.map(result => {
+                            return (
+                                <tr key={result} >
+                                    <td> {result.User.first_name} </td>
+                                    <td> {result.User.last_name} </td>
 
-                {/* <p>{props.assets.result.User.first_name} {props.assets.result.User.first_name} </p> */}
+                                </tr>
+                            )
+                        })
+                        }
+
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td></td>
+
+
+
+                        </tr>
+                    </tfoot>
+
+                </table>
+
             </div>
         </div>
-
 
 
 

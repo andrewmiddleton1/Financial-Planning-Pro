@@ -10,7 +10,7 @@ const LandingJumbo = (props) => {
             <div className='col-sm-8 mx-auto jumboText'>
                 <h1 className='d-flex justify-content-center companyName'>
                     <div className="tcaLogo">
-                        <img src={tcaLogo} alt="tcaLogo" />
+                        <img src={tcaLogo} alt="tcaLogo" className="responsive" />
                     </div>
 
                 </h1>

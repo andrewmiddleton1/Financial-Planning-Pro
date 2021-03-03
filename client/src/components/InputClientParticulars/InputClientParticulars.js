@@ -2,6 +2,10 @@ import React, { useState, useEffect } from "react";
 import { inputClientParticulars } from '../UserFunctions/userFunctions';
 import { useAppContext } from '../../store';
 import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
+import { DropdownButton, Dropdown } from 'react-bootstrap';
+import DatePicker from "react-datepicker";
+
+import "react-datepicker/dist/react-datepicker.css";
 
 
 
@@ -12,6 +16,7 @@ const InputClientParticulars = (props) => {
     const [googlevalue, setValue] = useState({ value: { description: "" } });
     // appDispatch({ type: SET_USER_ADDRESS, payload: googlevalue });
     console.log('google val', googlevalue)
+
 
 
     const [inputState, setInputState] = React.useState({
@@ -39,7 +44,7 @@ const InputClientParticulars = (props) => {
     });
 
     console.log(inputState);
-    console.log(inputState.address);
+    console.log(inputState.date_of_birth);
 
     useEffect(() => {
 
@@ -50,6 +55,10 @@ const InputClientParticulars = (props) => {
 
         });
     }, [googlevalue.value.description]);
+
+
+
+
 
 
     const handleValidation = () => {
@@ -99,22 +108,22 @@ const InputClientParticulars = (props) => {
             formIsValid = false;
             errors["salutation"] = "Cannot be empty";
         }
-        else if (!inputState.salutation.match(/^[a-zA-Z]+$/)) {
-            formIsValid = false;
-            errors["salutation"] = "Only letters";
-        }
+        // else if (!inputState.salutation.match(/^[a-zA-Z]+$/)) {
+        //     formIsValid = false;
+        //     errors["salutation"] = "Only letters";
+        // }
         else { }
 
-        // preferredName
-        if (!inputState.preferredName) {
-            formIsValid = false;
-            errors["preferredName"] = "Cannot be empty";
-        }
+        // // preferredName
+        // if (!inputState.preferredName) {
+        //     formIsValid = false;
+        //     errors["preferredName"] = "Cannot be empty";
+        // }
         // else if (!inputState.preferredName.match(/^[a-zA-Z]+$/)) {
         //     formIsValid = false;
         //     errors["preferredName"] = "Only letters";
         // }
-        else { }
+        // else { }
 
         // date_of_birth
         if (!inputState.date_of_birth) {
@@ -132,10 +141,10 @@ const InputClientParticulars = (props) => {
             formIsValid = false;
             errors["sex"] = "Cannot be empty";
         }
-        else if (!inputState.sex.match(/^[a-zA-Z]+$/)) {
-            formIsValid = false;
-            errors["sex"] = "Only letters";
-        }
+        // else if (!inputState.sex.match(/^[a-zA-Z]+$/)) {
+        //     formIsValid = false;
+        //     errors["sex"] = "Only letters";
+        // }
         else { }
 
         // marital_status
@@ -143,10 +152,10 @@ const InputClientParticulars = (props) => {
             formIsValid = false;
             errors["marital_status"] = "Cannot be empty";
         }
-        else if (!inputState.marital_status.match(/^[a-zA-Z]+$/)) {
-            formIsValid = false;
-            errors["marital_status"] = "Only letters";
-        }
+        // else if (!inputState.marital_status.match(/^[a-zA-Z]+$/)) {
+        //     formIsValid = false;
+        //     errors["marital_status"] = "Only letters";
+        // }
         else { }
 
         // tax_resident
@@ -161,15 +170,15 @@ const InputClientParticulars = (props) => {
         else { }
 
         // citizen
-        if (!inputState.citizen) {
-            formIsValid = false;
-            errors["citizen"] = "Cannot be empty";
-        }
+        // if (!inputState.citizen) {
+        //     formIsValid = false;
+        //     errors["citizen"] = "Cannot be empty";
+        // }
         // else if (!inputState.citizen.match(/^[a-zA-Z]+$/)) {
         //     formIsValid = false;
         //     errors["citizen"] = "Only letters";
         // }
-        else { }
+        // else { }
 
         // country_of_origin
         if (!inputState.country_of_origin) {
@@ -216,33 +225,33 @@ const InputClientParticulars = (props) => {
         // else { }
 
         // mobile
-        if (!inputState.mobile) {
-            formIsValid = false;
-            errors["mobile"] = "Cannot be empty";
-        }
-        else if (!inputState.mobile.match(/^[0-9]*$/)) {
+        // if (!inputState.mobile) {
+        //     formIsValid = false;
+        //     errors["mobile"] = "Cannot be empty";
+        // }
+        if (!inputState.mobile.match(/^[0-9]*$/)) {
             formIsValid = false;
             errors["mobile"] = "Only numbers";
         }
         else { }
 
-        //  home_phone
-        if (!inputState.home_phone) {
-            formIsValid = false;
-            errors["home_phone"] = "Cannot be empty";
-        }
-        else if (!inputState.home_phone.match(/^[0-9]*$/)) {
+        // //  home_phone
+        // if (!inputState.home_phone) {
+        //     formIsValid = false;
+        //     errors["home_phone"] = "Cannot be empty";
+        // }
+        if (!inputState.home_phone.match(/^[0-9]*$/)) {
             formIsValid = false;
             errors[" home_phone"] = "Only numbers";
         }
         else { }
 
         // work_phone
-        if (!inputState.work_phone) {
-            formIsValid = false;
-            errors["work_phone"] = "Cannot be empty";
-        }
-        else if (!inputState.work_phone.match(/^[0-9]*$/)) {
+        // if (!inputState.work_phone) {
+        //     formIsValid = false;
+        //     errors["work_phone"] = "Cannot be empty";
+        // }
+        if (!inputState.work_phone.match(/^[0-9]*$/)) {
             formIsValid = false;
             errors["work_phone"] = "Only numbers";
         }
@@ -261,8 +270,11 @@ const InputClientParticulars = (props) => {
         setInputState({
             ...inputState, // you always have to copy the old state like this
             [event.target.name]: event.target.value // and set the property that changed like this
+
         });
     };
+
+
 
     const onSubmit = (event) => {
         let errors = {};
@@ -365,15 +377,27 @@ const InputClientParticulars = (props) => {
                         </div>
 
                         <div className='form-group'>
-                            <label htmlFor='salutation'>salutation</label>
-                            <input type='salutation'
-                                refs='salutation'
-                                className='form-control'
-                                name='salutation'
-                                placeholder='Enter Salutation'
-                                value={inputState.salutation}
-                                onChange={onChange}
-                            />
+                            <label htmlFor='salutation'>Salutation</label>
+                            <DropdownButton id="dropdown-basic-button"
+                                title={inputState.salutation}
+                                placeholder="Salutation"
+                                onSelect={function (env) {
+                                    setInputState({
+                                        ...inputState,
+                                        salutation: env
+                                    })
+                                    console.log(env);
+
+                                }}
+                                controlShouldRenderValue={true}
+                            >
+                                <Dropdown.Item eventKey="Mr">Mr</Dropdown.Item>
+                                <Dropdown.Item eventKey="Mrs">Mrs</Dropdown.Item>
+                                <Dropdown.Item eventKey="Ms">Ms</Dropdown.Item>
+                                <Dropdown.Item eventKey="Dr">Dr</Dropdown.Item>
+                                <Dropdown.Item eventKey="Other">Other</Dropdown.Item>
+                            </DropdownButton>
+
                             <span style={{ color: "red" }}>{inputState.errors["salutation"]}</span>
                         </div>
                         <div className='form-group'>
@@ -390,62 +414,155 @@ const InputClientParticulars = (props) => {
                         </div>
                         <div className='form-group'>
                             <label htmlFor='date_of_birth'>Date of Birth</label>
-                            <input type='date_of_birth'
-                                refs='date_of_birth'
-                                className='form-control'
-                                name='date_of_birth'
-                                placeholder='Enter Date of Birth'
-                                value={inputState.date_of_birth}
-                                onChange={onChange}
-                            />
+                            <div>
+                                <DatePicker
+                                    title={inputState.date_of_birth}
+                                    // placeholder="Salutation"
+                                    onSelect={function (env) {
+                                        setInputState({
+                                            ...inputState,
+                                            date_of_birth: env
+                                        })
+                                        console.log(env);
+
+                                    }}
+                                    controlShouldRenderValue={true}
+                                    selected={inputState.date_of_birth}
+                                    showYearDropdown
+                                    showMonthDropdown
+                                    dateFormat="dd/MM/yyyy"
+
+                                />
+                            </div>
+
                             <span style={{ color: "red" }}>{inputState.errors["date_of_birth"]}</span>
                         </div>
                         <div className='form-group'>
                             <label htmlFor='sex'>Sex</label>
-                            <input type='sex'
+                            <DropdownButton id="dropdown-basic-button"
+                                title={inputState.sex}
+                                placeholder="Sex"
+                                onSelect={function (env) {
+                                    setInputState({
+                                        ...inputState,
+                                        sex: env
+                                    })
+                                    console.log(env);
+
+                                }}
+                                controlShouldRenderValue={true}
+                            >
+                                <Dropdown.Item eventKey="Male">Male</Dropdown.Item>
+                                <Dropdown.Item eventKey="Female">Female</Dropdown.Item>
+                                <Dropdown.Item eventKey="Other">Other</Dropdown.Item>
+
+                            </DropdownButton>
+
+
+                            {/* <input type='sex'
                                 refs='sex'
                                 className='form-control'
                                 name='sex'
                                 placeholder='Enter Sex'
                                 value={inputState.sex}
                                 onChange={onChange}
-                            />
+                            /> */}
                             <span style={{ color: "red" }}>{inputState.errors["sex"]}</span>
                         </div>
                         <div className='form-group'>
                             <label htmlFor='marital_status'>Martital Status</label>
-                            <input type='marital_status'
+                            <DropdownButton id="dropdown-basic-button"
+                                title={inputState.marital_status}
+                                placeholder="Marital Status"
+                                onSelect={function (env) {
+                                    setInputState({
+                                        ...inputState,
+                                        marital_status: env
+                                    })
+                                    console.log(env);
+
+                                }}
+                                controlShouldRenderValue={true}
+                            >
+                                <Dropdown.Item eventKey="Married">Married</Dropdown.Item>
+                                <Dropdown.Item eventKey="Single">Single</Dropdown.Item>
+                                <Dropdown.Item eventKey="De Facto">De Facto</Dropdown.Item>
+                                <Dropdown.Item eventKey="Divorced">Divorced</Dropdown.Item>
+                                <Dropdown.Item eventKey="Widowed">Widowed</Dropdown.Item>
+                                <Dropdown.Item eventKey="Other">Other</Dropdown.Item>
+                            </DropdownButton>
+
+
+                            {/* <input type='marital_status'
                                 refs='marital_status'
                                 className='form-control'
                                 name='marital_status'
                                 placeholder='Enter Marital Status'
                                 value={inputState.marital_status}
                                 onChange={onChange}
-                            />
+                            /> */}
                             <span style={{ color: "red" }}>{inputState.errors["marital_status"]}</span>
                         </div>
                         <div className='form-group'>
                             <label htmlFor='tax_resident'>Tax Resident</label>
-                            <input type='tax_resident'
+                            <DropdownButton id="dropdown-basic-button"
+                                title={inputState.tax_resident}
+                                placeholder="Tax Resident"
+                                onSelect={function (env) {
+                                    setInputState({
+                                        ...inputState,
+                                        tax_resident: env
+                                    })
+                                    console.log(env);
+
+                                }}
+                                controlShouldRenderValue={true}
+                            >
+                                <Dropdown.Item eventKey="Yes">Yes</Dropdown.Item>
+                                <Dropdown.Item eventKey="No">No</Dropdown.Item>
+                                <Dropdown.Item eventKey="Not Sure">Not sure</Dropdown.Item>
+
+                            </DropdownButton>
+
+                            {/* <input type='tax_resident'
                                 refs='tax_resident'
                                 className='form-control'
                                 name='tax_resident'
                                 placeholder='Enter Tax Residence Status'
                                 value={inputState.tax_resident}
                                 onChange={onChange}
-                            />
+                            /> */}
                             <span style={{ color: "red" }}>{inputState.errors["tax_resident"]}</span>
                         </div>
                         <div className='form-group'>
-                            <label htmlFor='citizen'>Citizen</label>
-                            <input type='citizen'
+                            <label htmlFor='citizen'>Australian Citizen</label>
+
+                            <DropdownButton id="citizen"
+                                title={inputState.tax_resident}
+                                placeholder="Australian Citizen"
+                                onSelect={function (env) {
+                                    setInputState({
+                                        ...inputState,
+                                        citizen: env
+                                    })
+                                    console.log(env);
+
+                                }}
+                                controlShouldRenderValue={true}
+                            >
+                                <Dropdown.Item eventKey="Yes">Yes</Dropdown.Item>
+                                <Dropdown.Item eventKey="No">No</Dropdown.Item>
+
+                            </DropdownButton>
+
+                            {/* <input type='citizen'
                                 refs='citizen'
                                 className='form-control'
                                 name='citizen'
                                 placeholder='Enter Citizen Status'
                                 value={inputState.citizen}
                                 onChange={onChange}
-                            />
+                            /> */}
                             <span style={{ color: "red" }}>{inputState.errors["citizen"]}</span>
                         </div>
                         <div className='form-group'>
@@ -461,27 +578,71 @@ const InputClientParticulars = (props) => {
                             <span style={{ color: "red" }}>{inputState.errors["country_of_origin"]}</span>
                         </div>
                         <div className='form-group'>
-                            <label htmlFor='preservation_age'>Preservation Age</label>
-                            <input type='preservation_age'
+                            <label htmlFor='preservation_age'>Preservation Age (age you can access your super)</label>
+                            <DropdownButton id="dropdown-basic-button"
+                                title={inputState.preservation_age}
+                                placeholder="Preservation Age"
+                                onSelect={function (env) {
+                                    setInputState({
+                                        ...inputState,
+                                        preservation_age: env
+                                    })
+                                    console.log(env);
+
+                                }}
+                                controlShouldRenderValue={true}
+                            >
+                                <Dropdown.Item eventKey="55">55</Dropdown.Item>
+                                <Dropdown.Item eventKey="56">56</Dropdown.Item>
+                                <Dropdown.Item eventKey="57">57</Dropdown.Item>
+                                <Dropdown.Item eventKey="58">58</Dropdown.Item>
+                                <Dropdown.Item eventKey="59">59</Dropdown.Item>
+                                <Dropdown.Item eventKey="60">60</Dropdown.Item>
+                                <Dropdown.Item eventKey="Not Sure">Not sure</Dropdown.Item>
+
+                            </DropdownButton>
+
+
+                            {/* <input type='preservation_age'
                                 refs='preservation_age'
                                 className='form-control'
                                 name='preservation_age'
                                 placeholder='Enter Preservation Age'
                                 value={inputState.preservation_age}
                                 onChange={onChange}
-                            />
+                            /> */}
                             <span style={{ color: "red" }}>{inputState.errors["preservation_age"]}</span>
                         </div>
                         <div className='form-group'>
                             <label htmlFor='age_pension_age'>Age Pension Age</label>
-                            <input type='age_pension_age'
+                            <DropdownButton id="dropdown-basic-button"
+                                title={inputState.age_pension_age}
+                                placeholder="Preservation Age"
+                                onSelect={function (env) {
+                                    setInputState({
+                                        ...inputState,
+                                        age_pension_age: env
+                                    })
+                                    console.log(env);
+
+                                }}
+                                controlShouldRenderValue={true}
+                            >
+                                <Dropdown.Item eventKey="66 years">66</Dropdown.Item>
+                                <Dropdown.Item eventKey="66 years and 6 months">66 years and 6 months</Dropdown.Item>
+                                <Dropdown.Item eventKey="67">67</Dropdown.Item>
+
+                            </DropdownButton>
+
+
+                            {/* <input type='age_pension_age'
                                 refs='age_pension_age'
                                 className='form-control'
                                 name='age_pension_age'
                                 placeholder='Enter Age Pension Age'
                                 value={inputState.age_pension_age}
                                 onChange={onChange}
-                            />
+                            /> */}
                             <span style={{ color: "red" }}>{inputState.errors["age_pension_age"]}</span>
                         </div>
 

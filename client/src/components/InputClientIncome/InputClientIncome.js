@@ -3,6 +3,7 @@ import { getOneClientByEmail, inputClientIncome } from '../UserFunctions/userFun
 import { useAppContext } from '../../store';
 import { useEffect } from 'react';
 import SimpleFileUpload from 'react-simple-file-upload';
+import { DropdownButton, Dropdown } from 'react-bootstrap';
 
 const InputClientIncome = (props) => {
 
@@ -44,23 +45,23 @@ const InputClientIncome = (props) => {
         let formIsValid = true;
 
 
-        // employment_type
-        if (inputState.employment_type !== "undefined") {
-            if (!inputState.employment_type.match(/^[a-zA-Z]+$/)) {
-                formIsValid = false;
-                errors["employment_type"] = "Only letters";
-            }
-        }
-        else { }
+        // // employment_type
+        // if (inputState.employment_type !== "undefined") {
+        //     if (!inputState.employment_type.match(/^[a-zA-Z]+$/)) {
+        //         formIsValid = false;
+        //         errors["employment_type"] = "Only letters";
+        //     }
+        // }
+        // else { }
 
-        // industry
-        if (inputState.industry !== "undefined") {
-            if (!inputState.industry.match(/^[a-zA-Z]+$/)) {
-                formIsValid = false;
-                errors["industry"] = "Only letters";
-            }
-        }
-        else { }
+        // // industry
+        // if (inputState.industry !== "undefined") {
+        //     if (!inputState.industry.match(/^[a-zA-Z]+$/)) {
+        //         formIsValid = false;
+        //         errors["industry"] = "Only letters";
+        //     }
+        // }
+        // else { }
 
         // primary_income
         if (inputState.primary_income !== "undefined") {
@@ -205,14 +206,40 @@ const InputClientIncome = (props) => {
                         <h1 className='h3 mb-3 font-weight normal'>Please Input your Income</h1>
                         <div className='form-group'>
                             <label htmlFor='employment_type'>Employment Type</label>
-                            <input type='text'
+                            <DropdownButton id="dropdown-basic-button"
+                                title={inputState.employment_type}
+                                placeholder="Employment Type"
+                                onSelect={function (env) {
+                                    setInputState({
+                                        ...inputState,
+                                        employment_type: env
+                                    })
+                                    console.log(env);
+
+                                }}
+                                controlShouldRenderValue={true}
+                            >
+                                <Dropdown.Item eventKey="Full-Time">Full-Time</Dropdown.Item>
+                                <Dropdown.Item eventKey="Part-Time">Part-Time</Dropdown.Item>
+                                <Dropdown.Item eventKey="Casual">Casual</Dropdown.Item>
+                                <Dropdown.Item eventKey="Contractor">Contractor</Dropdown.Item>
+                                <Dropdown.Item eventKey="Self-Employed">Self-Employed</Dropdown.Item>
+                                <Dropdown.Item eventKey="Retired">Retired</Dropdown.Item>
+                                <Dropdown.Item eventKey="Home-Duties">Home-Duties</Dropdown.Item>
+                                <Dropdown.Item eventKey="Student">Student</Dropdown.Item>
+                                <Dropdown.Item eventKey="Unemployed">Unemployed</Dropdown.Item>
+                                <Dropdown.Item eventKey="Other">Other</Dropdown.Item>
+                            </DropdownButton>
+
+
+                            {/* <input type='text'
                                 refs='employment_type'
                                 className='form-control'
                                 name='employment_type'
                                 placeholder='Enter Employment Type'
                                 value={inputState.employment_type}
                                 onChange={onChange}
-                            />
+                            /> */}
                             <span style={{ color: "red" }}>{inputState.errors["employment_type"]}</span>
                         </div>
 
@@ -230,7 +257,7 @@ const InputClientIncome = (props) => {
                         </div>
 
                         <div className='form-group'>
-                            <label htmlFor='primary_income'>Primary Income</label>
+                            <label htmlFor='primary_income'>Primary Income (amount)</label>
                             <input type='text'
                                 refs='primary_income'
                                 className='form-control'
@@ -252,7 +279,7 @@ const InputClientIncome = (props) => {
                         </div>
 
                         <div className='form-group'>
-                            <label htmlFor='secondary_income'>Secondary Income</label>
+                            <label htmlFor='secondary_income'>Secondary Income (amount)</label>
                             <input type='text'
                                 refs='secondary_income'
                                 className='form-control'

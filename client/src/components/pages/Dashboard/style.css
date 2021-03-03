@@ -50,12 +50,12 @@ background-color: khaki;
     text-align: center;
   }
 
-  @media (max-width: 768px) {
+  /* @media (max-width: 768px) {
     .sidebar {
         display: none;
     }
     .aside {
       display: none;
   }
-}
+} */
 

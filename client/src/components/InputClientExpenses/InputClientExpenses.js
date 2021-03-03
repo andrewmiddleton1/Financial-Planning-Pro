@@ -295,6 +295,7 @@ const InputClientExpenses = (props) => {
                 <div className='col-md-6 mt-5 mx-auto'>
                     <form noValidate onSubmit={onSubmit}>
                         <h1 className='h3 mb-3 font-weight normal'>Please Input your Monthly Expenses</h1>
+                        <p>(and include zero where none is paid)</p>
                         <div className='form-group'>
                             <label htmlFor='mortgage_repayments'>Monthly Mortgage Repayments</label>
                             <input type='text'

@@ -66,11 +66,11 @@ module.exports = function (sequelize, DataTypes) {
 
     },
     preservation_age: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
 
     },
     age_pension_age: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
 
     },
     address: {
@@ -78,15 +78,15 @@ module.exports = function (sequelize, DataTypes) {
 
     },
     mobile: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
 
     },
     home_phone: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
 
     },
     work_phone: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
 
     },
 

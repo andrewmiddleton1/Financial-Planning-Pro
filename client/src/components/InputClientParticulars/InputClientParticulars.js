@@ -126,15 +126,15 @@ const InputClientParticulars = (props) => {
         // else { }
 
         // date_of_birth
-        if (!inputState.date_of_birth) {
-            formIsValid = false;
-            errors["date_of_birth"] = "Cannot be empty";
-        }
+        // if (!inputState.date_of_birth) {
+        //     formIsValid = false;
+        //     errors["date_of_birth"] = "Cannot be empty";
+        // }
         // else if (!inputState.date_of_birth.match(/^[0-9]*$/)) {
         //     formIsValid = false;
         //     errors["date_of_birth"] = "Only numbers";
         // }
-        else { }
+        // else { }
 
         // sex
         if (!inputState.sex) {
@@ -196,10 +196,10 @@ const InputClientParticulars = (props) => {
             formIsValid = false;
             errors["preservation_age"] = "Cannot be empty";
         }
-        else if (!inputState.preservation_age.match(/^[0-9]*$/)) {
-            formIsValid = false;
-            errors["preservation_age"] = "Only numbers";
-        }
+        // else if (!inputState.preservation_age.match(/^[0-9]*$/)) {
+        //     formIsValid = false;
+        //     errors["preservation_age"] = "Only numbers";
+        // }
         else { }
 
         // age_pension_age
@@ -207,10 +207,10 @@ const InputClientParticulars = (props) => {
             formIsValid = false;
             errors["age_pension_age"] = "Cannot be empty";
         }
-        else if (!inputState.age_pension_age.match(/^[0-9]*$/)) {
-            formIsValid = false;
-            errors["age_pension_age"] = "Only numbers";
-        }
+        // else if (!inputState.age_pension_age.match(/^[0-9]*$/)) {
+        //     formIsValid = false;
+        //     errors["age_pension_age"] = "Only numbers";
+        // }
         else { }
 
         // address
@@ -229,33 +229,33 @@ const InputClientParticulars = (props) => {
         //     formIsValid = false;
         //     errors["mobile"] = "Cannot be empty";
         // }
-        if (!inputState.mobile.match(/^[0-9]*$/)) {
-            formIsValid = false;
-            errors["mobile"] = "Only numbers";
-        }
-        else { }
+        // if (!inputState.mobile.match(/^[0-9]*$/)) {
+        //     formIsValid = false;
+        //     errors["mobile"] = "Only numbers";
+        // }
+        // else { }
 
         // //  home_phone
         // if (!inputState.home_phone) {
         //     formIsValid = false;
         //     errors["home_phone"] = "Cannot be empty";
         // }
-        if (!inputState.home_phone.match(/^[0-9]*$/)) {
-            formIsValid = false;
-            errors[" home_phone"] = "Only numbers";
-        }
-        else { }
+        // if (!inputState.home_phone.match(/^[0-9]*$/)) {
+        //     formIsValid = false;
+        //     errors[" home_phone"] = "Only numbers";
+        // }
+        // else { }
 
         // work_phone
         // if (!inputState.work_phone) {
         //     formIsValid = false;
         //     errors["work_phone"] = "Cannot be empty";
+        // // }
+        // if (!inputState.work_phone.match(/^[0-9]*$/)) {
+        //     formIsValid = false;
+        //     errors["work_phone"] = "Only numbers";
         // }
-        if (!inputState.work_phone.match(/^[0-9]*$/)) {
-            formIsValid = false;
-            errors["work_phone"] = "Only numbers";
-        }
-        else { }
+        // else { }
 
         setInputState({
             ...inputState,
@@ -414,7 +414,16 @@ const InputClientParticulars = (props) => {
                         </div>
                         <div className='form-group'>
                             <label htmlFor='date_of_birth'>Date of Birth</label>
-                            <div>
+                            <input type='date_of_birth'
+                                refs='date_of_birth'
+                                className='form-control'
+                                name='date_of_birth'
+                                placeholder='Date Of Birth'
+                                value={inputState.date_of_birth}
+                                onChange={onChange}
+                            />
+
+                            {/* <div>
                                 <DatePicker
                                     title={inputState.date_of_birth}
                                     // placeholder="Salutation"
@@ -433,7 +442,7 @@ const InputClientParticulars = (props) => {
                                     dateFormat="dd/MM/yyyy"
 
                                 />
-                            </div>
+                            </div> */}
 
                             <span style={{ color: "red" }}>{inputState.errors["date_of_birth"]}</span>
                         </div>
